@@ -10,7 +10,7 @@ def list(request):
     data = List.objects.order_by('date_due')
     return render(request, 'todo/list.html', {'data': data})
 
-def post_new(request):
+def task_new(request):
     if request.method == "POST":
         form = NewList(request.POST)
         if form.is_valid():
@@ -18,9 +18,9 @@ def post_new(request):
             return redirect(list)
     else:
         form = NewList()
-    return render(request, 'todo/post_edit.html', {'form' : form})
+    return render(request, 'todo/task_edit.html', {'form' : form})
 
-def post_edit(request, pk):
+def task_edit(request, pk):
     data = get_object_or_404(List, pk=pk)
     if request.method == "POST":
         form = NewList(request.POST, instance=data)
@@ -29,7 +29,7 @@ def post_edit(request, pk):
             return redirect(list)
     else:
         form = NewList(instance=data)
-    return render(request, 'todo/post_edit.html', {'form': form})
+    return render(request, 'todo/task_edit.html', {'form': form})
 
 def delete(request, pk):
     data = get_object_or_404(List, pk=pk)

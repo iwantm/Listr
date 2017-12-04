@@ -4,11 +4,11 @@
     <div class="container-fluid">
       <div>
         <div class="page-header vcenter">
-          <a href="{% url 'post_new' %}"  type="button" class="btn btn-outline-primary btn-block float-right vcenter">New Entry</a>
+          <a href="{% url 'task_new' %}"  type="button" class="btn btn-outline-primary btn-block float-right vcenter">New Entry</a>
         </div>
         <table class="table table-hover">
           {% for data in data %}
-            <tr><td class="text-left align-middle">{{ data.task }}</td><td class="text-right">{{ data.date_due |date:"j/n/o H:i" }} <a type="button" class="btn btn-outline-primary" href="{% url 'post_edit' pk=data.pk %}">Edit</a><a type="button" class="btn btn-outline-danger" href="{% url 'delete' pk=data.pk %}">Delete</a></td></tr>
+            <tr><td class="text-left align-middle">{{ data.task }}</td><td class="text-right">{{ data.date_due |date:"j/n/o H:i" }} <a type="button" class="btn btn-outline-primary" href="{% url 'task_edit' pk=data.pk %}">Edit</a><a type="button" class="btn btn-outline-danger" href="{% url 'delete' pk=data.pk %}">Delete</a></td></tr>
           {% endfor %}
         </table>
       </div>
